@@ -9,6 +9,8 @@ HTTP server exmaple with Golang.
 - [Echo](https://echo.labstack.com/)
 - [GORM](https://gorm.io/)
 - [mockery](https://github.com/vektra/mockery)
+- [validator](https://github.com/go-playground/validator)
+- [migrate](https://github.com/golang-migrate/migrate)
 
 ## Migration
 
