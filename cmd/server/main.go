@@ -20,7 +20,10 @@ func main() {
 	dsn := os.Getenv("DSN")
 	debug := os.Getenv("DEBUG") == "true"
 
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+		PrepareStmt: true,
+	})
+
 	if err != nil {
 		panic(err)
 	}
@@ -34,7 +37,11 @@ func main() {
 	handler := transport.NewHandler(todoService)
 
 	e := echo.New()
+
+	// middleware
 	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
 	e.Validator = &CustomValidator{validator: validator.New()}
 	api := e.Group("/api")
 	handler.Route(api)

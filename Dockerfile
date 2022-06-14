@@ -7,7 +7,7 @@ WORKDIR /go/src/go-server-exmaple/
 COPY . .
 
 RUN go mod download
-RUN go build -a -installsuffix cgo -o server cmd/server/server.go  
+RUN go build -a -installsuffix cgo -o server cmd/server/main.go  
 
 FROM alpine:latest AS production-stage
 

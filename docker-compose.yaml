@@ -10,9 +10,24 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
-      - '3306:3306'
+      - 3306:3306
     volumes:
       - mysql:/var/lib/mysql
+  app:
+    image: app
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/go/src/go-server-exmaple
+      - /go/src/go-server-exmaple/tmp
+    links:
+      - mysql
+    depends_on:
+      - mysql
 volumes:
   mysql:
     driver: local

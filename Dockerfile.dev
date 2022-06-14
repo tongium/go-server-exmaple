@@ -1,0 +1,15 @@
+FROM golang:1.18-alpine
+
+ENV TZ=Asia/Bangkok
+ENV CGO_ENABLED 0
+
+RUN go install github.com/cosmtrek/air@latest
+
+WORKDIR /go/src/go-server-exmaple
+
+COPY go.mod go.mod
+COPY go.sum go.sum
+
+RUN go mod download
+
+ENTRYPOINT [ "air" ]
