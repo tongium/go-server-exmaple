@@ -28,8 +28,20 @@ migrate -path migrations/ -database "mysql://user:password@tcp(127.0.0.1:3306)/i
 
 ## Testing
 
-### Gernerate mocks
+### Gernerate Mocks
 
 ```sh
 mockery --all  
+```
+
+### Unit Testing
+
+```sh
+go test -v ./...
+```
+
+### Load Testing
+
+```
+wrk -t 10 -c 100 -d 30s http://localhost:8080/api/todos/1
 ```
