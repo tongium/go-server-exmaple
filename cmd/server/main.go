@@ -17,13 +17,10 @@ import (
 )
 
 func main() {
-	dsn := os.Getenv("DSN")
 	debug := os.Getenv("DEBUG") == "true"
 
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
-		PrepareStmt: true,
-	})
-
+	dsn := os.Getenv("DSN")
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic(err)
 	}

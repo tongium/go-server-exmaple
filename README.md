@@ -14,6 +14,12 @@ HTTP server exmaple with Golang.
 
 ## Migration
 
+### Install
+
+```sh
+brew install golang-migrate
+```
+
 ### Create migration files
 
 ```sh
